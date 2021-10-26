@@ -645,7 +645,7 @@ class Channel(virtual.Channel):
             client_kwargs['endpoint_url'] = self.endpoint_url
         client_config = self.transport_options.get('client-config') or {}
         config = Config(**client_config)
-        return session.client('sqs', config=config, **client_kwargs)
+        return session.client('sqs', config=config, verify=False, **client_kwargs)
 
     def sqs(self, queue=None):
         if queue is not None and self.predefined_queues:
